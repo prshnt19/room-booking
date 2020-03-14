@@ -1,0 +1,6 @@
+{% autoescape off %}
+{{ user.name }}
+Congratulations your booking has been confirmed from {{arrive}} to {{depart}} and your room number is {{roomID}}.
+To cancel the booking click on
+{{ domain }}{% url 'activate' uidb64=uid  %}
+{% endautoescape %}
