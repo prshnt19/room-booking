@@ -1,0 +1,4 @@
+{% autoescape off %}
+{{ user.first_name }} has requested to apply for membership on the reference of {{reference_name}} to confirm click on the below link
+{{ domain }}{% url 'activatemembers' uidb64=uid token=token %}
+{% endautoescape %}
