@@ -1,0 +1,5 @@
+{% autoescape off %}
+{{ user.name }}
+has applied
+{{ domain }}{% url 'activate' uidb64=uid  %}
+{% endautoescape %}
