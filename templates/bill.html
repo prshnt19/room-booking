@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MDP Invoice</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="keywords" content="">
+{% load static %}
+<link href="{% static 'css/bill.css' %}" rel="stylesheet">
+<link rel="shortcut icon" href="{% static 'img/logo-image.png' %}">
+
+</head>
+<style>
+  div {
+    background-image: url("../static/img/logo-image.png");
+    background-repeat: no-repeat;
+    background-size: 80px 110px;
+    background-position: center bottom;
+    background-blend-mode: lighten;
+}
+</style>
+<body>
+<!-- navbar -->
+<div>
+  <h5 align="center">&nbsp; &nbsp; &nbsp; &nbsp;ABV-Indian Institute of Information Technology & Management, Gwalior</h5>
+  <h3 align="center">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Management Development Programme Centre</h3>
+<br>
+  <center><invoice id="rcorners1"><b>Invoice Cum Cash Receipt</b></invoice></center>
+ <br><br>
+ <br><br>
+  <br>
+  <h5 align="left">Bill No. : {{formsubmit.id}}    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
+     &nbsp; &nbsp; &nbsp; &nbsp; Date DD/MM/YYYY</h5>
+</div>
+  <table>
+    <tr>
+    <th>Name of the Guest/Company/Programme : {{formsubmit.name}}</th>
+    </tr>
+    <tr>
+    <th>Room No. : {{booking.roomID}} </th>
+    </tr>
+    <tr>
+    <th>Room Type : {{room.room_type}}</th></tr>
+    <tr>
+    <th>Referred by: {{formsubmit.reference_name}}</th>
+    </tr>
+    </table>
+    <br><br>
+    <table>
+    <tr>
+      <th width="10%"><b>S. No.</b></th>
+      <th><b>Description</b></th>
+      <th><b>Total Days</b></th>
+      <th><b>Rate (Rs.)</b></th>
+      <th><b>Total Amount (Rs.)</b></th>
+    </tr>
+      <tr>
+      <td width="10%">1</td>
+      <td width="50%">To be added</td>
+        {% with days=4 %}
+      <td width="10%">{{ days }}</td>
+        {% if room.room_type == "VIP" %}
+      <td width="10%">2000</td>
+      <td width="20%">{% widthratio 2000 1 days %}</td>
+        {% else %}
+      <td width="10%">1250</td>
+      <td width="20%">{% widthratio 1250 1 days %}</td>
+        {% endif %}
+      {% endwith %}
+
+    </table>
+ <h5 align="center">(PLEASE RETURN YOUR KEY ON DEPARTURE)</h5>
+ <table>
+   <tr>
+   <th><b>Total lodging charges (Rs.)</b></th>
+   <th></th>
+   </tr>
+   <tr>
+   <td width="90%">Less : Advance, if any (Re. Advance Receipt No. -- Rs.)</td>
+   <td width="10%"></td>
+</tr>
+<tr>
+<td>Net Amount paid by cash / cheque No.       Date: </td>
+<td></td>
+<tr>
+<td>Amount in words : Rupees </td>
+<td></td>
+</tr>
+ </table>
+ <br>
+<p> I agree that I am responsible for the payment of this bill in the event if not paid by the Company/Organisation or person indicated /Subject to realization of cheque.<br>Subject to Gwalior Jurisdiction only.<br>
+</p>
+<h5 align="left"> Register No. : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;Requistioner</h5>
+
+  <h5 align="left"> Entry No. : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+    Signature of Guest</h5>
+    <br><br>
+<h5 align="right"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+  &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;Signature of incharge<br>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+    &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;MDP Centre</h5>
+
+</body>
+</html>
