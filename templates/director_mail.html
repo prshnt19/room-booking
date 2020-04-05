@@ -1,0 +1,5 @@
+{% autoescape off %}
+{{ formsubmit.name }}
+has requested to book a room on the reference of {{reference_name}} to confirm click on the below link
+{{ domain }}{% url 'activatedirector' uidb64=uid %}
+{% endautoescape %}
