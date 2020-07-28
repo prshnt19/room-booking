@@ -1,7 +1,0 @@
-Requirement already satisfied: xhtml2pdf in /home/project/virtualenviroment/lib/python3.6/site-packages
-Requirement already satisfied: Pillow in /home/project/virtualenviroment/lib/python3.6/site-packages (from xhtml2pdf)
-Requirement already satisfied: html5lib>=1.0 in /home/project/virtualenviroment/lib/python3.6/site-packages (from xhtml2pdf)
-Requirement already satisfied: pyPdf2 in /home/project/virtualenviroment/lib/python3.6/site-packages (from xhtml2pdf)
-Requirement already satisfied: reportlab>=3.0 in /home/project/virtualenviroment/lib/python3.6/site-packages (from xhtml2pdf)
-Requirement already satisfied: six in /home/project/virtualenviroment/lib/python3.6/site-packages (from xhtml2pdf)
-Requirement already satisfied: webencodings in /home/project/virtualenviroment/lib/python3.6/site-packages (from html5lib>=1.0->xhtml2pdf)
