@@ -1,0 +1,43 @@
+invoice {
+    background-color: white;
+    width: 300px;
+    border: 1px solid black;
+
+}
+p{
+  font-size: 10px;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 10px;
+
+
+}
+table, td, th,tr {
+    border: 2px solid black;
+}
+
+td, th {
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+#rcorners1 {
+    border-radius: 25px;
+    background: #ffffff;
+    padding: 20px;
+    width: 200px;
+    height: 100px;
+}
+.playerOne {
+  float: right;
+}
+.playerTwo {
+  float: left;}

@@ -1,0 +1,1322 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>IIITM Visitor Hostel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    {% load static %}
+    <link href="{% static 'css/bootstrap-responsive.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <link href="{% static 'color/default.css' %}" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'img/logo-image.png' %}">
+    <!-- =======================================================
+    Theme Name: Maxim
+    Theme URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
+    Author: BootstrapMade.com
+    Author URL: https://bootstrapmade.com
+    ======================================================= -->
+    <!--
+    slider-->
+    <meta charset="UTF-8">
+    <title>Image Slider - responsive, modular, autoplay</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:200,300,400,700">
+
+    <meta name="viewport" content="width=device-width">
+
+
+    <style>
+        /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+        .slider,
+        .slider > div {
+            /* Images default to Center Center. Maybe try 'center top'? */
+            background-position: center center;
+            display: block;
+            width: 100%;
+            height: 650px;
+            /* height: 100vh; *//* If you want fullscreen */
+            position: relative;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-color: #000;
+            overflow: hidden;
+            -moz-transition: transform .4s;
+            -o-transition: transform .4s;
+            -webkit-transition: transform .4s;
+            transition: transform .4s;
+        }
+
+        .slider > div {
+            position: absolute;
+        }
+
+        .slider > i {
+            color: #5bbd72;
+            position: absolute;
+            font-size: 60px;
+            margin: 20px;
+            top: 40%;
+            text-shadow: 0 10px 2px #223422;
+            transition: .3s;
+            width: 30px;
+            padding: 10px 13px;
+            background: #fff;
+            background: rgba(255, 255, 255, .3);
+            cursor: pointer;
+            line-height: 0;
+            box-sizing: content-box;
+            border-radius: 3px;
+            z-index: 4;
+        }
+
+        .slider > i svg {
+            margin-top: 3px;
+        }
+
+        .slider > .left {
+            left: -100px;
+        }
+
+        .slider > .right {
+            right: -100px;
+        }
+
+        .slider:hover > .left {
+            left: 0;
+        }
+
+        .slider:hover > .right {
+            right: 0;
+        }
+
+        .slider > i:hover {
+            background: #fff;
+            background: rgba(255, 255, 255, .8);
+            transform: translateX(-2px);
+        }
+
+        .slider > i.right:hover {
+            transform: translateX(2px);
+        }
+
+        .slider > i.right:active,
+        .slider > i.left:active {
+            transform: translateY(1px);
+        }
+
+        .slider:hover > div {
+            transform: scale(1.01);
+        }
+
+        .hoverZoomOff:hover > div {
+            transform: scale(1);
+        }
+
+        .slider > ul {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            z-index: 4;
+            padding: 0;
+            margin: 0;
+            transform: translateX(-50%);
+        }
+
+        .slider > ul > li {
+            padding: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            list-style: none;
+            float: left;
+            margin: 10px 10px 0;
+            cursor: pointer;
+            border: 1px solid #fff;
+            -moz-transition: .3s;
+            -o-transition: .3s;
+            -webkit-transition: .3s;
+            transition: .3s;
+        }
+
+        .slider > ul > .showli {
+            background-color: #7EC03D;
+            -moz-animation: boing .5s forwards;
+            -o-animation: boing .5s forwards;
+            -webkit-animation: boing .5s forwards;
+            animation: boing .5s forwards;
+        }
+
+        .slider > ul > li:hover {
+            background-color: #7EC03D;
+        }
+
+        .slider > .show {
+            z-index: 1;
+        }
+
+        .hideDots > ul {
+            display: none;
+        }
+
+        .showArrows > .left {
+            left: 0;
+        }
+
+        .showArrows > .right {
+            right: 0;
+        }
+
+        .titleBar {
+            z-index: 2;
+            display: inline-block;
+            background: rgba(0, 0, 0, .5);
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            transform: translateY(100%);
+            padding: 20px 30px;
+            transition: .3s;
+            color: #fff;
+        }
+
+        .titleBar * {
+            transform: translate(-20px, 30px);
+            transition: all 700ms cubic-bezier(0.37, 0.31, 0.2, 0.85) 200ms;
+            opacity: 0;
+        }
+
+        .titleBarTop .titleBar * {
+            transform: translate(-20px, -30px);
+        }
+
+        .slider:hover .titleBar,
+        .slider:hover .titleBar * {
+            transform: translate(0);
+            opacity: 1;
+        }
+
+        .titleBarTop .titleBar {
+            top: 0;
+            bottom: initial;
+            transform: translateY(-100%);
+        }
+
+        .slider > div span {
+            display: block;
+            background: rgba(0, 0, 0, .5);
+            position: absolute;
+            bottom: 0;
+            color: #fff;
+            text-align: center;
+            padding: 0;
+            width: 100%;
+        }
+
+
+        @keyframes boing {
+            0% {
+                transform: scale(1.2);
+            }
+            40% {
+                transform: scale(.6);
+            }
+            60% {
+                transform: scale(1.2);
+            }
+            80% {
+                transform: scale(.8);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .dropbtn {
+            background-color: #ffffff00;
+            color: white;
+            padding: 13px 15px;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+
+        /* -------------------------------------- */
+        /*collarge*/
+
+        /*collarge*/
+
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <!--slider-->
+</head>
+
+<body>
+<!-- navbar -->
+<div class="navbar-wrapper">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <!-- Responsive navbar -->
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
+                        class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </a>
+                <h1 class="brand"><a href="https://www.iiitm.ac.in/">Home</a></h1>
+                <!-- navigation -->
+                <nav class="pull-right nav-collapse collapse">
+                    <ul id="menu-main" class="nav">
+                        {% if user.username != "" %}
+                        <li><a href="#">Hi {{user.username}}!</a></li>
+                        {% endif %}
+                        <li><a title="team" href="#about">About</a></li>
+                        <li><a title="rooms" href="#rooms">Rooms</a></li>
+                        {% if user.username != "" %}
+                        <li><a href="/membership/roombooking">Book A Room</a></li>
+                        {% endif %}
+                        <li><a title="services" href="#services">Services</a></li>
+
+                        <!--<li><a title="Book Your Room" href="/bookroom/">BOOK YOUR ROOM</a></li>-->
+                        <!-- <li><div class="dropdown">
+<button class="dropbtn">BOOK YOUR ROOM</button>
+<div class="dropdown-content">
+<a href="/bookroom/">Non-Vip Guest</a>
+<a href="/vipform/">Vip Guest</a>
+</div>
+</div></li> -->
+
+                        <!--	<li><a title="blog" href="#blog">Blog</a></li>	-->
+
+                        <li><a title="Admin login" href="/admin/">Admin Login </a></li>
+                        {% if user.username != "" %}
+                        <li><a title="contact" href="/feedbackform">Feedback</a></li>
+                        <li><a title="Members" href="/membership/bookings">Bookings </a></li>
+                        <li><a title="Change" href="/membership/changepassword">Change Password </a></li>
+                        <li><a href="/membership/logout">Logout</a></li>
+                        {% else %}
+                        <li><a title="Members" href="/membership/">LogIn/SignUp </a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<!-- Header area -->
+<!-- Slider 1 -->
+<div>
+    <div style="position:absolute;z-index:10;width: 100%;text-align: center;">
+        <div id="header-wrapper" class="header-slider">
+            <header class="clearfix">
+                <div class="logo">
+                    <img src="{% static 'img/logo-image.png' %}" alt=""/>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="span12">
+                            <div id="main-flexslider" class="flexslider">
+                                <ul class="slides">
+                                    <li>
+                                        <p class="home-slide-content" style="color:#091D48">
+                                            <strong>ABV-IIITM</strong>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="home-slide-content" style="color:#091D48">
+                                            <strong>MDP</strong> Centre
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="home-slide-content" style="color:#091D48" font-size="12">
+                                            <strong>Visitor's</strong> Hostel
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="home-slide-content" style="color:#091D48">
+                                            <strong>अतिथि देवो भव:</strong>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+    </div>
+    <div class="slider" id="slider1" style="z-index:0;">
+
+        <!-- Slides -->
+        <div style="background-image:url(../../static/img/bg/bg-1.jpg)">
+
+        </div>
+        <div style="background-image:url(../../static/img/bg/vip.jpg)">
+
+        </div>
+        <div style="background-image:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/30256/Gif-pont-lueur-600.gif)">
+        </div>
+
+        <!-- The Arrows -->
+        <i class="left" class="arrows" style="z-index:2; position:absolute;">
+            <svg viewBox="0 0 100 100">
+                <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"></path>
+            </svg>
+        </i>
+        <i class="right" class="arrows" style="z-index:2; position:absolute;">
+            <svg viewBox="0 0 100 100">
+                <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"
+                      transform="translate(100, 100) rotate(180) "></path>
+            </svg>
+        </i>
+        <!-- Title Bar -->
+        <!--  <span class="titleBar">
+        <h1>This Slider has all default settings.</h1>
+    </span>-->
+
+    </div>
+
+</div>
+
+
+<!-- spacer section -->
+<!--
+<section class="spacer green">
+<div class="container">
+<div class="row">
+<div class="span6 alignright flyLeft">
+<blockquote class="large">
+There's huge space beetween creativity and imagination <cite>Mark Simmons, Nett Media</cite>
+</blockquote>
+</div>
+<div class="span6 aligncenter flyRight">
+<i class="icon-coffee icon-10x"></i>
+</div>
+</div>
+</div>
+</section>
+-->
+<!-- end spacer section -->
+<!-- section: team -->
+<section id="about" class="section">
+    <div class="container">
+        <h4>About</h4>
+        <div class="row">
+            <div class="span4 offset1">
+                <div>
+                    <h2>We are here to <strong>Serve</strong></h2>
+                    <p>
+                        ABV-IIITM has a separate ‘visitor’s hostel’ for guests and visitors. Thirty air-conditioned
+                        rooms spread over three floors accommodate visitors of this institute. Guest rooms are furnished
+                        and draped. They are fitted with water purifiers, channel television, refrigerators, microwave
+                        ovens, and hotplate. If required you could prepare your own food. Every room has an en-suite
+                        bathroom with round the clock water supply and geyser connection.<br>The guest house is set
+                        amidst plenty of greenery allowing viewing of cranes, egrets, swallows, squirrels, mongoose, and
+                        even peacocks.
+                    </p>
+                </div>
+            </div>
+            <div class="span6">
+                <div class="aligncenter">
+                    <img src="{% static 'img/bg/bg-2.jpg' %}" alt=""/>
+                </div>
+            </div>
+        </div>
+        <!--
+        <div class="row">
+        <div class="span2 offset1 flyIn">
+        <div class="people">
+        <img class="team-thumb img-circle" src="img/team/img-1.jpg" alt="" />
+        <h3>John Doe</h3>
+        <p>
+        Art director
+    </p>
+</div>
+</div>
+<div class="span2 flyIn">
+<div class="people">
+<img class="team-thumb img-circle" src="img/team/img-2.jpg" alt="" />
+<h3>Mike Doe</h3>
+<p>
+Web developer
+</p>
+</div>
+</div>
+<div class="span2 flyIn">
+<div class="people">
+<img class="team-thumb img-circle" src="img/team/img-3.jpg" alt="" />
+<h3>Neil Doe</h3>
+<p>
+Web designer
+</p>
+</div>
+</div>
+<div class="span2 flyIn">
+<div class="people">
+<img class="team-thumb img-circle" src="img/team/img-4.jpg" alt="" />
+<h3>Mark Joe</h3>
+<p>
+UI designer
+</p>
+</div>
+</div>
+<div class="span2 flyIn">
+<div class="people">
+<img class="team-thumb img-circle" src="img/team/img-5.jpg" alt="" />
+<h3>Stephen B</h3>
+<p>
+Digital imaging
+</p>
+</div>
+</div>
+-->
+    </div>
+    </div>
+    <!-- /.container -->
+</section>
+<section id="rooms" class="section black">
+    <div class="container">
+        <h4>Rooms</h4>
+        <!-- Three columns -->
+        <h1><strong>MDP CENTER</strong></h1>
+        <div class="row">
+            <div class="span6 animated-fast flyIn">
+                <div class="service-box">
+                    <img src="{% static 'img/bg/vip.jpg' %}" alt=""/>
+                </div>
+            </div>
+
+            <div class="span6 animated-fast flyIn">
+                <div class="service-box">
+                    <h2>VIP</h2>
+                    <p>
+                        Rooms are fitted with refrigerators, microwave ovens, and hotplate. If required you could
+                        prepare your own food.<br><br><strong>Expense: 2000/-</strong>
+
+                    </p><br>
+                    {% if user.username != "" %}
+                    <a href="/membership/roombooking/"><strong>
+                        <button type="button" class="btn btn-info">BOOK NOW</button>
+                    </strong></a>
+                    {% else %}
+                    <a href="/membership/"><strong>
+                        <button type="button" class="btn btn-info">BOOK NOW</button>
+                    </strong></a>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="span6 animated flyIn">
+                <div class="service-box">
+                    <h2>AC</h2>
+                    <p>
+                        All the rooms have high speed WiFi connectivity to keep you on the go.<br><br><strong>Expense :
+                        <br>
+                        Single Occupancy : 750/-<br>
+                        Double Occupancy : 1250/-</strong>
+                    </p><br>
+                    {% if user.username != "" %}
+                    <a href="/membership/roombooking/"><strong>
+                        <button type="button" class="btn btn-info">BOOK NOW</button>
+                    </strong></a>
+                    {% else %}
+                    <a href="/membership/"><strong>
+                        <button type="button" class="btn btn-info">BOOK NOW</button>
+                    </strong></a>
+                    {% endif %}
+                </div>
+            </div>
+            <br>
+
+            <div class="span6 animated flyIn">
+                <div class="service-box">
+                    <img src="{% static 'img/bg/ac.jpg' %}" alt=""/>
+                </div>
+            </div>
+            <!--
+            <div class="span4 animated-fast flyIn">
+            <div class="service-box">
+            <img src="img/bg/non.jpg" alt="" />
+            <h2>Non-AC</h2>
+            <p>
+            For entertainment you have a channel television in your rooms.
+        </p><br>
+        <a href="book_a_room.html"><strong><button type="button" class="btn btn-info">BOOK NOW</button></strong></a>
+
+    </div>
+</div>
+-->
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+
+        </div>
+        <br><br>
+        <h1 align="left"><strong>INTERNATIONAL VISITORS HOSTEL </strong></h1>
+        <div class="row">
+
+            <div class="span6 animated flyIn">
+                <div class="service-box">
+                    <img src="{% static 'img/bg/visitors.jpg' %}" alt=""/>
+                    <!--
+                    <h2>AC</h2>
+                    <p>
+                    All the rooms have high speed WiFi connectivity to keep you on the go.
+                </p><br>
+                <a href="book_a_room.html"><strong><button type="button" class="btn btn-info">BOOK NOW</button></strong></a>
+            -->
+                </div>
+            </div>
+
+            <div class="span6 animated flyIn">
+                <div class="service-box">
+                    <h2>AC</h2>
+                    <p>
+
+                        All the rooms have high speed WiFi connectivity to keep you on the go.<br><br><strong>Expense :
+                        <br>
+                        Single Occupancy : 500/-<br>
+                        Double Occupancy : 750/-</strong>
+
+                    </p><br>
+                    {% if user.username != "" %}
+                    <a href="/membership/roombooking/"><strong>
+                        <button type="button" class="btn btn-info">BOOK NOW</button>
+                    </strong></a>
+                    {% else %}
+                    <a href="/membership/"><strong>
+                        <button type="button" class="btn btn-info">BOOK NOW</button>
+                    </strong></a>
+                    {% endif %}
+                </div>
+            </div>
+            <!--
+            <div class="span4 animated-fast flyIn">
+            <div class="service-box">
+            <img src="img/bg/non.jpg" alt="" />
+            <h2>Non-AC</h2>
+            <p>
+            For entertainment you have a channel television in your rooms.
+        </p><br>
+        <a href="book_a_room.html"><strong><button type="button" class="btn btn-info">BOOK NOW</button></strong></a>
+
+        </div>
+        </div>
+        -->
+        </div>
+</section>
+
+<!-- end section: team -->
+<!-- section: services -->
+<section id="services" class="section orange">
+    <div class="container">
+        <h4>Services</h4>
+        <!-- Four columns -->
+        <div class="row">
+            <div class="span3 animated-fast flyIn">
+                <div class="service-box">
+                    <img src="{% static 'img/icons/food.png' %}" alt=""/>
+                    <h2>Food</h2>
+                    <p>
+                        Rooms are fitted with refrigerators, microwave ovens, and hotplate. If required you could
+                        prepare your own food.
+                    </p>
+                </div>
+            </div>
+            <div class="span3 animated flyIn">
+                <div class="service-box">
+                    <img src="{% static 'img/icons/wifi.png' %}" alt=""/>
+                    <h2>WiFi</h2>
+                    <p>
+                        All the rooms have high speed WiFi connectivity to keep you on the go.
+                    </p>
+                </div>
+            </div>
+            <div class="span3 animated-fast flyIn">
+                <div class="service-box">
+                    <img src="{% static 'img/icons/tv.png' %}" alt=""/>
+                    <h2>Television</h2>
+                    <p>
+                        For entertainment you have a channel television in your rooms.
+                    </p>
+                </div>
+            </div>
+            <div class="span3 animated-slow flyIn">
+                <div class="service-box">
+                    <img src="{% static 'img/icons/shower.png' %}" alt=""/>
+                    <h2>Shower</h2>
+                    <p>
+                        Every room has an en-suite bathroom with round the clock water supply and geyser connection.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section: services -->
+<!-- section: works -->
+<!--
+<section id="works" class="section">
+<div class="container clearfix">
+<h4>Our Works</h4>
+<div class="row">
+<div id="filters" class="span12">
+<ul class="clearfix">
+<li>
+<a href="#" data-filter="*" class="active">
+<h5>All</h5>
+</a>
+</li>
+<li>
+<a href="#" data-filter=".web">
+<h5>Web</h5>
+</a>
+</li>
+<li>
+<a href="#" data-filter=".print">
+<h5>Print</h5>
+</a>
+</li>
+<li>
+<a href="#" data-filter=".design">
+<h5>Design</h5>
+</a>
+</li>
+<li>
+<a href="#" data-filter=".photography">
+<h5>Photography</h5>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="row">
+<div class="span12">
+<div id="portfolio-wrap">
+<div class="portfolio-item grid print photography">
+<div class="portfolio">
+<a href="img/works/big.jpg" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+<img src="img/works/1.png" alt="" />
+<div class="portfolio-overlay">
+<div class="thumb-info">
+<h5>Portfolio name</h5>
+<i class="icon-plus icon-2x"></i>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="portfolio-item grid print design web">
+<div class="portfolio">
+<a href="img/works/big.jpg" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+<img src="img/works/2.png" alt="" />
+<div class="portfolio-overlay">
+<div class="thumb-info">
+<h5>Portfolio name</h5>
+<i class="icon-plus icon-2x"></i>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="portfolio-item grid print design">
+<div class="portfolio">
+<a href="img/works/big.jpg" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+<img src="img/works/3.png" alt="" />
+<div class="portfolio-overlay">
+<div class="thumb-info">
+<h5>Portfolio name</h5>
+<i class="icon-plus icon-2x"></i>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="portfolio-item grid photography web">
+<div class="portfolio">
+<a href="img/works/big.jpg" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+<img src="img/works/4.png" alt="" />
+<div class="portfolio-overlay">
+<div class="thumb-info">
+<h5>Portfolio name</h5>
+<i class="icon-plus icon-2x"></i>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="portfolio-item grid photography web">
+<div class="portfolio">
+<a href="img/works/big.jpg" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+<img src="img/works/5.png" alt="" />
+<div class="portfolio-overlay">
+<div class="thumb-info">
+<h5>Portfolio name</h5>
+<i class="icon-plus icon-2x"></i>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="portfolio-item grid photography web">
+<div class="portfolio">
+<a href="img/works/big.jpg" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+<img src="img/works/6.png" alt="" />
+<div class="portfolio-overlay">
+<div class="thumb-info">
+<h5>Portfolio name</h5>
+<i class="icon-plus icon-2x"></i>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="portfolio-item grid photography web">
+<div class="portfolio">
+<a href="img/works/big.jpg" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+<img src="img/works/7.png" alt="" />
+<div class="portfolio-overlay">
+<div class="thumb-info">
+<h5>Portfolio name</h5>
+<i class="icon-plus icon-2x"></i>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="portfolio-item grid photography">
+<div class="portfolio">
+<a href="img/works/big.jpg" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+<img src="img/works/8.png" alt="" />
+<div class="portfolio-overlay">
+<div class="thumb-info">
+<h5>Portfolio name</h5>
+<i class="icon-plus icon-2x"></i>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="portfolio-item grid photography web">
+<div class="portfolio">
+<a href="img/works/big.jpg" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+<img src="img/works/9.png" alt="" />
+<div class="portfolio-overlay">
+<div class="thumb-info">
+<h5>Portfolio name</h5>
+<i class="icon-plus icon-2x"></i>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="portfolio-item grid design web">
+<div class="portfolio">
+<a href="img/works/big.jpg" data-pretty="prettyPhoto[gallery1]" class="portfolio-image">
+<img src="img/works/10.png" alt="" />
+<div class="portfolio-overlay">
+<div class="thumb-info">
+<h5>Portfolio name</h5>
+<i class="icon-plus icon-2x"></i>
+</div>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="spacer bg3">
+<div class="container">
+<div class="row">
+<div class="span12 aligncenter flyLeft">
+<blockquote class="large">
+We are an established and trusted web agency with a reputation for commitment and high integrity
+</blockquote>
+</div>
+<div class="span12 aligncenter flyRight">
+<i class="icon-rocket icon-10x"></i>
+</div>
+</div>
+</div>
+</section>
+-->
+<!-- end spacer section -->
+<!--
+<section id="book" class="section-padding">
+<div class="container">
+<div class="row">
+<div class="col-md-12 text-center">
+<h1 class="header-h">Book Your Room</h1>
+
+<p class="header-p">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+<br>nibh euismod tincidunt ut laoreet dolore magna aliquam. </p>
+
+</div>
+</div>
+<div class="row msg-row">
+<div class="col-md-4 col-sm-4 mr-15">
+<div class="media-2">
+<div class="media-left">
+<div class="contact-phone bg-1 text-center"><span class="phone-in-talk fa fa-phone"></span></div>
+</div>
+
+<div class="media-body">
+<h4 class="dark-blue regular">Phone Numbers</h4>
+<p class="light-blue regular alt-p">+440 875369208 - <span class="contacts-sp">Phone Booking</span></p>
+</div>
+
+</div>
+<div class="media-2">
+<div class="media-left">
+<div class="contact-email bg-14 text-center"><span class="hour-icon fa fa-clock-o"></span></div>
+</div>
+
+<div class="media-body">
+<h4 class="dark-blue regular">Opening Hours</h4>
+<p class="light-blue regular alt-p"> Monday to Friday 09.00 - 24:00</p>
+<p class="light-blue regular alt-p">
+Friday and Sunday 08:00 - 03.00
+</p>
+</div>
+</div>
+</div>
+<div class="col-md-8 col-sm-8">
+<form action="" method="post" role="form" class="contactForm">
+<div id="sendmessage">Your booking request has been sent. Thank you!</div>
+<div id="errormessage"></div>
+<div class="col-md-6 col-sm-6 contact-form pad-form">
+<div class="form-group label-floating is-empty">
+<input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+<div class="validation"></div>
+</div>
+
+</div>
+<div class="col-md-6 col-sm-6 contact-form">
+<div class="form-group">
+<input type="date" class="form-control label-floating is-empty" name="date" id="date" placeholder="Date" data-rule="required" data-msg="This field is required" />
+<div class="validation"></div>
+</div>
+</div>
+<div class="col-md-6 col-sm-6 contact-form pad-form">
+<div class="form-group">
+<input type="email" class="form-control label-floating is-empty" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+<div class="validation"></div>
+</div>
+</div>
+<div class="col-md-6 col-sm-6 contact-form">
+<div class="form-group">
+<input type="time" class="form-control label-floating is-empty" name="time" id="time" placeholder="Time" data-rule="required" data-msg="This field is required" />
+<div class="validation"></div>
+</div>
+</div>
+<div class="col-md-6 col-sm-6 contact-form">
+<div class="form-group">
+<input type="text" class="form-control label-floating is-empty" name="phone" id="phone" placeholder="Phone" data-rule="required" data-msg="This field is required" />
+<div class="validation"></div>
+</div>
+</div>
+<div class="col-md-6 col-sm-6 contact-form">
+<div class="form-group">
+<input type="text" class="form-control label-floating is-empty" name="people" id="people" placeholder="People" data-rule="required" data-msg="This field is required" />
+<div class="validation"></div>
+</div>
+</div>
+<div class="col-md-12 contact-form">
+<div class="form-group label-floating is-empty">
+<textarea class="form-control" name="message" rows="5" rows="3" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+<div class="validation"></div>
+</div>
+
+</div>
+<div class="col-md-12 btnpad">
+<div class="contacts-btn-pad">
+<button class="contacts-btn">Book Room</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+-->
+<!-- section: blog -->
+<!--
+<section id="blog" class="section">
+<div class="container">
+<h4>Our Blog</h4>
+<div class="row">
+<div class="span3">
+<div class="home-post">
+<div class="post-image">
+<img class="max-img" src="img/blog/img1.jpg" alt="" />
+</div>
+<div class="post-meta">
+<i class="icon-file icon-2x"></i>
+<span class="date">June 19, 2013</span>
+<span class="tags"><a href="#">Design</a>, <a href="#">Blog</a></span>
+</div>
+<div class="entry-content">
+<h5><strong><a href="#">New design trends</a></strong></h5>
+<p>
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. &hellip;
+</p>
+<a href="#" class="more">Read more</a>
+</div>
+</div>
+</div>
+<div class="span3">
+<div class="home-post">
+<div class="post-image">
+<img class="max-img" src="img/blog/img2.jpg" alt="" />
+</div>
+<div class="post-meta">
+<i class="icon-file icon-2x"></i>
+<span class="date">June 19, 2013</span>
+<span class="tags"><a href="#">Design</a>, <a href="#">News</a></span>
+</div>
+<div class="entry-content">
+<h5><strong><a href="#">Retro is great</a></strong></h5>
+<p>
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. &hellip;
+</p>
+<a href="#" class="more">Read more</a>
+</div>
+</div>
+</div>
+<div class="span3">
+<div class="home-post">
+<div class="post-image">
+<img class="max-img" src="img/blog/img3.jpg" alt="" />
+</div>
+<div class="post-meta">
+<i class="icon-file icon-2x"></i>
+<span class="date">June 22, 2013</span>
+<span class="tags"><a href="#">Design</a>, <a href="#">Tips</a></span>
+</div>
+<div class="entry-content">
+<h5><strong><a href="#">Isometric mockup</a></strong></h5>
+<p>
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. &hellip;
+</p>
+<a href="#" class="more">Read more</a>
+</div>
+</div>
+</div>
+<div class="span3">
+<div class="home-post">
+<div class="post-image">
+<img class="max-img" src="img/blog/img4.jpg" alt="" />
+</div>
+<div class="post-meta">
+<i class="icon-file icon-2x"></i>
+<span class="date">June 27, 2013</span>
+<span class="tags"><a href="#">News</a>, <a href="#">Tutorial</a></span>
+</div>
+<div class="entry-content">
+<h5><strong><a href="#">Free icon set</a></strong></h5>
+<p>
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. &hellip;
+</p>
+<a href="#" class="more">Read more</a>
+</div>
+</div>
+</div>
+</div>
+<div class="blankdivider30"></div>
+<div class="aligncenter">
+<a href="#" class="btn btn-large btn-theme">More blog post</a>
+</div>
+</div>
+</section>
+-->
+<!-- end spacer section -->
+<!-- section: contact -->
+<!-- collarge -->
+<section id="tourism" class="section">
+    <div class="container">
+        <h4>Gwalior Tourism</h4>
+        <!-- Four columns -->
+        <div class="row">
+            <div class="span3 animated-fast flyIn">
+                <div class="service-box">
+                    <a href="https://www.google.com/maps/place/Gwalior+Fort/@26.2313293,78.167307,17z/data=!3m1!4b1!4m5!3m4!1s0x3976c68ff0a2df73:0xebff42167ed98c34!8m2!3d26.2313245!4d78.1694957">
+                        <img src="{% static 'img/icons/Gwalior_fort.png' %}" alt=""/>
+                    </a>
+                    <h2>Gwalior Fort</h2>
+                    <p>
+                        ABout Gwalior
+                    </p>
+                </div>
+            </div>
+            <div class="span3 animated flyIn">
+                <div class="service-box">
+                    <a href="https://www.google.com/maps/place/Jai+Vilas+Palace,+Lashkar,+Gwalior,+Madhya+Pradesh+474007/@26.2042076,78.1662787,17z/data=!3m1!4b1!4m5!3m4!1s0x3976c4250954906f:0xbeb2d5cc267130db!8m2!3d26.2042028!4d78.1684674">
+                        <img src="{% static 'img/icons/jai vilas palace.png' %}" alt=""/>
+                    </a>
+                    <h2>Jai Vilas Palace</h2>
+                    <p>
+                        About JAi Vilas
+                    </p>
+                </div>
+            </div>
+            <div class="span3 animated-fast flyIn">
+                <div class="service-box">
+                    <a href="https://www.google.com/maps/place/Tighra+Dam/@26.2183163,78.0046118,17z/data=!3m1!4b1!4m5!3m4!1s0x3976cbe860308085:0xd29b10edd8414ed2!8m2!3d26.2183115!4d78.0068005">
+                        <img src="{% static 'img/icons/tighra dam.png' %}" alt=""/>
+                    </a>
+                    <h2>Tighra Dam</h2>
+                    <p>
+                        About Tighra Dam
+                    </p>
+                </div>
+            </div>
+            <div class="span3 animated-slow flyIn">
+                <div class="service-box">
+                    <a href="https://www.google.com/maps/place/Gopachal+Parvat/@26.2156203,78.1652281,17z/data=!3m1!4b1!4m5!3m4!1s0x3976c41f00000001:0x62044cbdd6f9935c!8m2!3d26.2156155!4d78.1674168">
+                        <img src="{% static 'img/icons/gopachal.png' %}" alt=""/>
+                    </a>
+                    <h2>Gopachal</h2>
+                    <p>
+                        About Gopachal
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <!-- Four columns -->
+        <div class="row">
+            <div class="span3 animated-fast flyIn">
+                <div class="service-box">
+                    <a href="https://www.google.com/maps/dir/26.2524411,78.1716242/Tomb+of+Tansen,+Gwalior,,+Tansen+Nagar,+Gwalior,+Madhya+Pradesh+474002/@26.2420977,78.1773079,15z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3976c695f53376ad:0xe42f492cf7cd20ac!2m2!1d78.179128!2d26.2315334">
+                        <img src="{% static 'img/icons/tansen memorial.png' %}" alt=""/>
+                    </a>
+                    <h2>Tansen Memorial</h2>
+                    <p>
+                        ABout Tansen memorial
+                    </p>
+                </div>
+            </div>
+            <div class="span3 animated flyIn">
+                <div class="service-box">
+                    <a href="https://www.google.com/maps/place/Man+Singh+Palace/@26.2302203,78.1670016,17z/data=!3m1!4b1!4m5!3m4!1s0x3976c6923de2e59b:0xfafd5c625e9bc434!8m2!3d26.2302155!4d78.1691903">
+                        <img src="{% static 'img/icons/man singh palace.png' %}" alt=""/>
+                    </a>
+                    <h2>Man Singh Palace</h2>
+                    <p>
+                        About MAn Singh Palace
+                    </p>
+                </div>
+            </div>
+            <div class="span3 animated-fast flyIn">
+                <div class="service-box">
+                    <a href="https://www.google.com/maps/place/Sun+Temple+Gwalior/@26.2363649,78.2164495,17z/data=!3m1!4b1!4m5!3m4!1s0x3976c146d6155d6b:0xa34478e9dc6fc27b!8m2!3d26.2363601!4d78.2186382">
+                        <img src="{% static 'img/icons/sun temple.png' %}" alt=""/>
+                    </a>
+                    <h2>Sun temple</h2>
+                    <p>
+                        About Sun temple
+                    </p>
+                </div>
+            </div>
+            <div class="span3 animated-slow flyIn">
+                <div class="service-box">
+                    <a href="https://www.google.com/maps/place/Gujari+Mahal/@26.2340506,78.168457,17z/data=!3m1!4b1!4m5!3m4!1s0x3976c69317f82527:0xf552fe24bfd04257!8m2!3d26.2340458!4d78.1706457">
+                        <img src="{% static 'img/icons/gujar mahal.png' %}" alt=""/>
+                    </a>
+                    <h2>Gujari Mahal</h2>
+                    <p>
+                        About gujari mahal
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2 align="center"><b>For More Information Visit <a
+            href="http://www.mptourism.com/tourist-places/places-to-visit-in-gwalior.html"> <font color="dark-blue">Here
+    </a></b></h2>
+</section>
+<!-- collarge -->
+<section id="contact" class="section green">
+    <div class="container">
+        <h4>Give Your Feedback</h4>
+        <p>
+            In case of any kind of inconvenience or for your valuable feedback please leave your message.
+        </p>
+        <div class="blankdivider30">
+        </div>
+        <div class="row">
+            <div class="span12">
+                <div class="cform" id="contact-form">
+                    <div id="sendmessage">Your message has been sent. Thank you!</div>
+                    <div id="errormessage"></div>
+                    <form action="/feedbacksubmit/" method="post" id="feedback_form" role="form" class="contactForm">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="span6">
+                                <!-- <div class="field your-name form-group">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                <div class="validation"></div>
+                            </div> -->
+                                <!-- <div class="field your-email form-group">
+                                <input type="text" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                                <div class="validation"></div>
+                            </div> -->
+                                <div class="field subject form-group">
+                                    <input type="text" class="form-control" name="subject" id="subject"
+                                           placeholder="Subject" data-rule="minlen:4"
+                                           data-msg="Please enter at least 8 chars of subject"/>
+                                    <div class="validation"></div>
+                                </div>
+                            </div>
+                            <div class="span6">
+                                <div class="field message form-group">
+                                    <textarea class="form-control" name="message" rows="5" data-rule="required"
+                                              data-msg="Please write something for us" placeholder="Message"></textarea>
+                                    <div class="validation"></div>
+                                </div>
+                                <button type="button" onclick="submit()" class="submit-btn">S</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- ./span12 -->
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="span6 offset3">
+                <!--
+                <ul class="social-networks">
+                <li><a href="#"><i class="icon-circled icon-bgdark icon-instagram icon-2x"></i></a></li>
+                <li><a href="#"><i class="icon-circled icon-bgdark icon-twitter icon-2x"></i></a></li>
+                <li><a href="#"><i class="icon-circled icon-bgdark icon-dribbble icon-2x"></i></a></li>
+                <li><a href="#"><i class="icon-circled icon-bgdark icon-pinterest icon-2x"></i></a></li>
+            </ul>
+        -->
+                <p class="copyright">
+                    &copy; ABV-IIITM. All rights reserved.
+                <div class="credits">
+                    <!--
+                    All the links in the footer should remain intact.
+                    You can delete the links only if you purchased the pro version.
+                    Licensing information: https://bootstrapmade.com/license/
+                    Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Maxim
+                -->
+                    Designed by <a href="#">Team</a>
+                </div>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- ./container -->
+</footer>
+<a href="#" class="scrollup"><i class="icon-angle-up icon-square icon-bgdark icon-2x"></i></a>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/jquery.scrollTo.js' %}"></script>
+<script src="{% static 'js/jquery.nav.js' %}"></script>
+<script src="{% static 'js/jquery.localScroll.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+<script src="{% static 'js/isotope.js' %}"></script>
+<script src="{% static 'js/jquery.flexslider.js' %}"></script>
+<script src="{% static 'js/inview.js' %}"></script>
+<script src="{% static 'js/animate.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+<script src="{% static 'contactform/contactform.js' %}"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+
+<script src="{% static 'js/index_slider.js' %}"></script>
+<script type="text/javascript">
+    (function ($) { // Begin jQuery
+        $(function () { // DOM ready
+            // If a link has a dropdown, add sub menu toggle.
+            $('nav ul li a:not(:only-child)').click(function (e) {
+                $(this).siblings('.nav-dropdown').toggle();
+                // Close one dropdown when selecting another
+                $('.nav-dropdown').not($(this).siblings()).hide();
+                e.stopPropagation();
+            });
+            // Clicking away from dropdown will remove the dropdown class
+            $('html').click(function () {
+                $('.nav-dropdown').hide();
+            });
+            // Toggle open and close nav styles on click
+            $('#nav-toggle').click(function () {
+                $('nav ul').slideToggle();
+            });
+            // Hamburger to X toggle
+            $('#nav-toggle').on('click', function () {
+                this.classList.toggle('active');
+            });
+        }); // end DOM ready
+    })(jQuery); // end jQuery
+</script>
+<script type="text/javascript">
+    function submit() {
+        // This function will figure out which tab to displa
+        // if you have reached the end of the form...
+
+        // ... the form gets submitted:
+
+        document.getElementById("feedback_form").submit();
+
+
+    }
+</script>
+
+</body>
+
+</html>
