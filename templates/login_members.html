@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Signup/Login</title>
-  {% load static %}
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,600" rel="stylesheet">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Signup/Login</title>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,600" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
 
-      <link rel="stylesheet" href="{% static 'css/login_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login_style.css' %}">
 
 
 </head>
@@ -19,152 +19,154 @@
 
 
 <div class="container">
-   <section id="formHolder">
+    <section id="formHolder">
 
-      <div class="row">
+        <div class="row">
 
-         <!-- Brand Box -->
-         <div class="col-sm-6 brand">
-            <a href="#" class="logo">ABV-IIITM <span>.</span></a>
+            <!-- Brand Box -->
+            <div class="col-sm-6 brand">
+                <a href="#" class="logo">ABV-IIITM <span>.</span></a>
 
-            <div class="heading">
-               <h2></h2>
-               <p></p>
+                <div class="heading">
+                    <h2></h2>
+                    <p></p>
+                </div>
+
+
             </div>
 
 
-         </div>
+            <!-- Form Box -->
+            <div class="col-sm-6 form">
+
+                <!-- Login Form -->
+                <div class="signup form-peice">
+
+                    <form class="login-form" action="login/" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="loginusername">Username</label>
+                            <input type="name" name="username" id="username" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" name="password" id="password" required>
+                        </div>
+
+                        <div class="CTA">
+                            <input type="submit" value="Login">
+                            <a href="#" class="switch">Apply For Membership</a>
+                        </div>
+                        <div class="CTA">
+                            <a href="forgotpassworduser/">Forgot Password ? </a>
+                        </div>
+
+                    </form>
+                    <!-- <form action="forgotpassword/" method="POST">
+                        {% csrf_token %}
+                       <div class="form-group">
+                          <label for="username">Username</label>
+                          <input type="name" name="username" id="username" required>
+                       </div> -->
+
+                    <!-- </form> -->
+                </div><!-- End Login Form -->
 
 
-         <!-- Form Box -->
-         <div class="col-sm-6 form">
+                <!-- Signup Form -->
+                <div class="login form-peice switched">
+                    <form class="signup-form" action="register/" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" name="name" id="name" class="name">
+                            <span class="error"></span>
+                        </div>
 
-            <!-- Login Form -->
-            <div class="signup form-peice">
+                        <div class="form-group">
+                            <label for="name">User Name</label>
+                            <input type="text" name="username" id="username" class="name">
+                            <span class="error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Adderss</label>
+                            <input type="email" name="email" id="email" class="email">
+                            <span class="error"></span>
+                        </div>
 
-               <form class="login-form" action="login/" method="post">
-                 {% csrf_token %}
-                  <div class="form-group">
-                     <label for="loginusername">Username</label>
-                     <input type="name" name="username" id="username" required>
-                  </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number -
+                                <small>Optional</small>
+                            </label>
+                            <input type="text" name="number" id="number">
+                        </div>
 
-                  <div class="form-group">
-                     <label for="loginPassword">Password</label>
-                     <input type="password" name="password" id="password" required>
-                  </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" class="pass">
+                            <span class="error"></span>
+                        </div>
 
-                  <div class="CTA">
-                     <input type="submit" value="Login">
-                     <a href="#" class="switch">Apply For Membership</a>
-                  </div>
-                  <div class="CTA">
-                     <a href="forgotpassworduser/">Forgot Password ? </a>
-                  </div>
-                
-               </form>
-               <!-- <form action="forgotpassword/" method="POST">
-                   {% csrf_token %}
-                  <div class="form-group">
-                     <label for="username">Username</label>
-                     <input type="name" name="username" id="username" required>
-                  </div> -->
-                
-                <!-- </form> -->
-            </div><!-- End Login Form -->
+                        <div class="form-group">
+                            <label for="passwordCon">Confirm Password</label>
+                            <input type="password" name="repassword" id="repassword" class="pass">
+                            <span class="error"></span>
+                        </div>
 
+                        <div class="form-group">
+                            <label for="street">Street</label>
 
-            <!-- Signup Form -->
-            <div class="login form-peice switched">
-               <form class="signup-form" action="register/" method="post">
-               {% csrf_token %}
-                  <div class="form-group">
-                     <label for="name">Full Name</label>
-                     <input type="text" name="name" id="name" class="name">
-                     <span class="error"></span>
-                  </div>
-
-                  <div class="form-group">
-                     <label for="name">User Name</label>
-                     <input type="text" name="username" id="username" class="name">
-                     <span class="error"></span>
-                  </div>
-                  <div class="form-group">
-                     <label for="email">Email Adderss</label>
-                     <input type="email" name="email" id="email" class="email">
-                     <span class="error"></span>
-                  </div>
-
-                  <div class="form-group">
-                     <label for="phone">Phone Number - <small>Optional</small></label>
-                     <input type="text" name="number" id="number">
-                  </div>
-
-                  <div class="form-group">
-                     <label for="password">Password</label>
-                     <input type="password" name="password" id="password" class="pass">
-                     <span class="error"></span>
-                  </div>
-
-                  <div class="form-group">
-                     <label for="passwordCon">Confirm Password</label>
-                     <input type="password" name="repassword" id="repassword" class="pass">
-                     <span class="error"></span>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="street">Street</label>
-
-                                        <input type="text" id="street" class="floatLabel" name="street" required>
-                    </div>
+                            <input type="text" id="street" class="floatLabel" name="street" required>
+                        </div>
 
 
-                  <div class="form-group">
-                     <label for="city">City</label>
-                    <input type="text" id="city" class="floatLabel" name="city" required>
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" class="floatLabel" name="city" required>
 
-                  </div>
-                  <div class="form-group">
-                     <label for="post-code">Post Code</label>
-                    <input type="text" id="post-code" class="floatLabel" name="post-code" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="post-code">Post Code</label>
+                            <input type="text" id="post-code" class="floatLabel" name="post-code" required>
 
-                  </div>
-<br>
-<br>
-                    <h2 class="heading">Reference Information</h2>
-                  <div class="form-group">
-                      <label for="reference_name">Reference Name</label>
-                    <input type="text" id="reference_name" class="floatLabel" name="reference_name" required>
+                        </div>
+                        <br>
+                        <br>
+                        <h2 class="heading">Reference Information</h2>
+                        <div class="form-group">
+                            <label for="reference_name">Reference Name</label>
+                            <input type="text" id="reference_name" class="floatLabel" name="reference_name" required>
 
-                  </div>
-                  <div class="form-group">
-                    <label for="reference_email">Reference Email</label>
-                    <input type="text" id="reference_email" class="floatLabel" name="reference_email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reference_email">Reference Email</label>
+                            <input type="text" id="reference_email" class="floatLabel" name="reference_email" required>
 
-                  </div>
-                  <br>
-
-
-                     <button type="submit" value="Submit"  >Submit</button>
-
-             <a href="#" class="switch">I have an account</a>
-
-               </form>
-            </div><!-- End Signup Form -->
-         </div>
-      </div>
-
-   </section>
+                        </div>
+                        <br>
 
 
-   <footer>
-      <p>
-      </p>
-   </footer>
+                        <button type="submit" value="Submit">Submit</button>
+
+                        <a href="#" class="switch">I have an account</a>
+
+                    </form>
+                </div><!-- End Signup Form -->
+            </div>
+        </div>
+
+    </section>
+
+
+    <footer>
+        <p>
+        </p>
+    </footer>
 </div>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-<script  src="{% static 'js/login.js' %}"></script>
+<script src="{% static 'js/login.js' %}"></script>
 
 
 </body>
