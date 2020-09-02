@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-}
+
 
 
 
@@ -139,6 +139,6 @@ STATICFILES_DIRS = (
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'imarpit1@gmail.com'
-EMAIL_HOST_PASSWORD = 'arpitarpit'
+EMAIL_HOST_USER = os.getenv('GoogleEMAIL')
+EMAIL_HOST_PASSWORD = os.getenv('GooglePASSWORD')
 EMAIL_PORT = 587
