@@ -4,3 +4,6 @@ __pycache__/
 .idea/workspace.xml
 .vscode/
 .fuse*
+celerybeatschedule
+db.sqlite3
+
