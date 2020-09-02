@@ -1,5 +1,4 @@
 from django.shortcuts import render
-# from .models import FormSubmit , Booking
 from .models import Room, UserProfile, FeedbackSubmit
 from members.models import BookingTable
 from django.contrib.auth.models import User
@@ -53,7 +52,7 @@ def lat_ajax(request):
 
                         f = 0
                 if f == 1:
-                    r.status='u'
+                    r.status = 'u'
                     r.save()
                     ru.append(r)
                     # User.objects.get(id = user.id).booking_set.add(booking)
@@ -62,48 +61,12 @@ def lat_ajax(request):
                 if found == norooms:
                     break
 
-                # found = 0
-                # for r in Room.objects.raw('SELECT * FROM forms_room WHERE status = "a" and room_type = %s', [room_type]):
-                # 	f = 1
-                # 	rID = r.roomID
-                # 	for b in BookingTable.objects.raw('SELECT * FROM members_bookingtable WHERE roomID_id = %s', [rID]):
-                #
-                # 		if(b.arrive > depart or b.depart < arrive):
-                # 			pass
-                # 		else:
-                #
-                # 			f=0
-                # 	if f == 1:
-                # 		#User.objects.get(id = user.id).booking_set.add(booking)
-                # 		found = 1
-                # 		break
-                # 	if found == 1:
-                # 		break
-                # if found == 0:
-                # 	booked=False
-                # else:
-                # 	booked=True
         for r in ru:
-            r.status='a'
+            r.status = 'a'
             r.save()
         data = {'found': found, 'norooms': norooms, 'arrive': arrive}
         return JsonResponse(data)
 
-
-#
-# delete it
-# def bill_genrate(request):
-# 	html_template = get_template('bill.html')
-# 	a=settings.STATICFILES_DIRS
-# 	b=''.join(a)
-# 	user=User.objects.get(username='ala989')
-# 	profile = user.userprofile
-# 	booking = Booking.objects.get(user=user)
-# 	rendered_html = html_template.render(({'user': user,'profile':profile,'booking':booking,})).encode(encoding="UTF-8")
-# 	pdf_file = HTML(string=rendered_html,base_url=request.build_absolute_uri()).write_pdf(stylesheets=[CSS(b +'/css/bill.css')])
-# 	response = HttpResponse(pdf_file, content_type='application/pdf')
-# 	response['Content-Disposition'] = 'filename="home_page.pdf"'
-# 	return response
 
 @login_required
 def feedback_submit(request):
